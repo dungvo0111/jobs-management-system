@@ -84,7 +84,7 @@ function signIn(payload: signInPayload): Promise<string> {
             },
             JWT_SECRET,
             {
-              expiresIn: '1h',
+              expiresIn: '12h',
             }
           )
           return token

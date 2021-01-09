@@ -1,9 +1,10 @@
 import mongoose, { Document } from 'mongoose'
+import { MessageDocument } from './Message'
 
 export type TaskDocument = Document & {
   dueDate: Date;
   jobId: string;
-  messageIds: string[];
+  messages: MessageDocument[]
 }
 
 const taskSchema = new mongoose.Schema({
@@ -15,9 +16,9 @@ const taskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  messageIds: {
-    type: [String],
-  },
-})
+  messages: {
+    type: [Object],
+  }
+}, { timestamps: true })
 
 export default mongoose.model<TaskDocument>('Task', taskSchema)
