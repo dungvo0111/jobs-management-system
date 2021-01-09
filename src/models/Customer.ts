@@ -4,6 +4,7 @@ export type CustomerDocument = Document & {
   firstName: string;
   lastName: string;
   email: string;
+  location: string;
   jobIds: string[];
 }
 
@@ -13,6 +14,10 @@ const customerSchema = new mongoose.Schema({
     required: true,
   },
   lastName: {
+    type: String,
+    required: true,
+  },
+  location: {
     type: String,
     required: true,
   },

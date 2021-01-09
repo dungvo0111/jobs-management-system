@@ -15,6 +15,7 @@ import { MONGODB_URI, SESSION_SECRET } from './util/secrets'
 
 import userRouter from './routers/user'
 import jobRouter from './routers/job'
+import customerRouter from './routers/customer'
 
 import apiErrorHandler from './middlewares/apiErrorHandler'
 import apiContentType from './middlewares/apiContentType'
@@ -58,7 +59,7 @@ app.use(lusca.xssProtection(true))
 // Use routers
 app.use('/api/v1/user', userRouter)
 app.use('/api/v1/jobs', jobRouter)
-
+app.use('/api/v1/customers', customerRouter)
 // Custom API error handler
 app.use(apiErrorHandler)
 

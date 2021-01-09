@@ -26,17 +26,17 @@ export const getJob = async (
     req: Request,
     res: Response,
     next: NextFunction
-  ) => {
+) => {
     try {
-      res.json(await JobService.getJob(req.params.id))
+        res.json(await JobService.getJob(req.params.id))
     } catch (error) {
-      if (error.statusCode === 400) {
-        next(new BadRequestError(error.message, error))
-      } else {
-        next(new NotFoundError(error.message, error))
-      }
+        if (error.statusCode === 400) {
+            next(new BadRequestError(error.message, error))
+        } else {
+            next(new NotFoundError(error.message, error))
+        }
     }
-  }
+}
 
 //POST /jobs
 export const createJob = async (
@@ -87,17 +87,17 @@ export const deleteJob = async (
     req: Request,
     res: Response,
     next: NextFunction
-  ) => {
+) => {
     try {
-      await JobService.deleteJob(req.params.id)
-      res.json({ message: 'Job deleted successfully' })
+        await JobService.deleteJob(req.params.id)
+        res.json({ message: 'Job deleted successfully' })
     } catch (error) {
-      if (error.statusCode === 400) {
-        next(new BadRequestError(error.message, error))
-      } else {
-        next(new NotFoundError(error.message, error))
-      }
+        if (error.statusCode === 400) {
+            next(new BadRequestError(error.message, error))
+        } else {
+            next(new NotFoundError(error.message, error))
+        }
     }
-  }
+}
 
 

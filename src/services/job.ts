@@ -1,3 +1,4 @@
+import { Types } from 'mongoose'
 import Job, { JobDocument } from '../models/Job'
 
 async function createJob(payload: JobDocument): Promise<JobDocument> {
@@ -28,14 +29,14 @@ async function createJob(payload: JobDocument): Promise<JobDocument> {
 }
 
 async function getAllJobs(userId: string): Promise<JobDocument[]> {
-    const jobs = await Job.find({ userIds: { $in: userId } }, { userIds: 0 })
+    const jobs = await Job.find({ userIds: { $in: userId } }, { 'userIds': 0 })
         .sort({ name: 1 }).exec()
 
     return jobs
 }
 
 async function getJob(id: string): Promise<JobDocument> {
-    return Job.findOne({ id })
+    return Job.findById(id)
         .exec()
         .then((job) => {
             if (!job) {
@@ -80,7 +81,7 @@ async function updateJob(
 }
 
 async function deleteJob(id: string): Promise<JobDocument | null> {
-    return Job.findOneAndDelete({ id })
+    return Job.findByIdAndDelete(id)
         .exec()
         .then((job) => {
             if (!job) {
