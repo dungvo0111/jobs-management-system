@@ -9,6 +9,7 @@ export type JobDocument = Document & {
   endDate: Date;
   status: Status;
   info: string;
+  customerId: string;
   userIds: string[];
   messageIds: string[];
   taskIds: string[];
@@ -38,6 +39,10 @@ const jobSchema = new mongoose.Schema({
     required: true,
   },
   info: {
+    type: String,
+    required: true,
+  },
+  customerId: {
     type: String,
     required: true,
   },

@@ -14,7 +14,6 @@ export const signUp = async (
   next: NextFunction
 ) => {
   try {
-    console.log(req.body)
     const user = await UserService.signUp(req.body)
     res.json({
       message: 'Sign up successful!',
@@ -47,5 +46,18 @@ export const signIn = async (
     } else {
       next(new BadRequestError(error.message, error))
     }
+  }
+}
+
+//GET /user 
+export const getAllUsers = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+      res.json(await UserService.getAllUsers())
+  } catch (error) {
+      throw new InternalServerError()
   }
 }

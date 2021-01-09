@@ -9,8 +9,8 @@ import jwt from 'jsonwebtoken'
 import { JWT_SECRET } from '../util/secrets'
 
 type signInPayload = {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 const isEmail = (email: string) => {
@@ -29,11 +29,11 @@ function signUp(payload: UserDocument): Promise<UserDocument> {
   if (!isEmail(payload.email)) {
     throw new Error('Must be a valid email address')
   }
-  // if (!isPassword(payload.password)) {
-  //     throw new Error(
-  //         'Password must be from eight characters, at least one letter and one number'
-  //     )
-  // }
+  if (!isPassword(payload.password)) {
+    throw new Error(
+      'Password must be from eight characters, at least one letter and one number'
+    )
+  }
   return User.find({ email: payload.email })
     .exec()
     .then((user) => {
@@ -95,7 +95,15 @@ function signIn(payload: signInPayload): Promise<string> {
     })
 }
 
+async function getAllUsers(): Promise<UserDocument[]> {
+  const users = await User.find({}, { 'lastName': 1, 'firstName': 1, 'email': 1 })
+    .sort({ firstName: 1 }).exec()
+
+  return users
+}
+
 export default {
   signUp,
   signIn,
+  getAllUsers
 }
