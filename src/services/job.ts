@@ -5,6 +5,8 @@ async function createJob(payload: JobDocument): Promise<JobDocument> {
     const {
         name,
         customerId,
+        customerName,
+        userName,
         location,
         startDate,
         endDate,
@@ -17,6 +19,8 @@ async function createJob(payload: JobDocument): Promise<JobDocument> {
     const job = new Job({
         name,
         customerId,
+        customerName,
+        userName,
         location,
         startDate,
         endDate,

@@ -96,7 +96,7 @@ function signIn(payload: signInPayload): Promise<string> {
 }
 
 async function getAllUsers(): Promise<UserDocument[]> {
-  const users = await User.find({}, { 'lastName': 1, 'firstName': 1, 'email': 1 })
+  const users = await User.find({}, { lastName: 1, firstName: 1, email: 1, })
     .sort({ firstName: 1 }).exec()
 
   return users

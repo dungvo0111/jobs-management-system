@@ -57,10 +57,10 @@ export const updateTask = async (
     next: NextFunction
 ) => {
     try {
-        const updatedJob = await TaskService.updateTask(req.params.taskId, req.body)
+        const updatedTask = await TaskService.updateTask(req.params.taskId, req.body)
         res.json({
             message: 'Task updated successfully!',
-            updatedJob,
+            updatedTask,
         })
     } catch (error) {
         if (error.statusCode === 400) {

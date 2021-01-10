@@ -2,7 +2,7 @@ import { MessageDocument } from '../models/Message'
 import Task, { TaskDocument } from '../models/Task'
 
 type updateTaskPayload = {
-    message?: MessageDocument
+    messages?: MessageDocument[]
     dueDate?: Date
 }
 
@@ -46,8 +46,8 @@ async function updateTask(taskId: string, payload: updateTaskPayload): Promise<T
         if (payload.dueDate) {
             task.dueDate = payload.dueDate
         }
-        if (payload.message) {
-            task.messages.push(payload.message)
+        if (payload.messages) {
+            task.messages = [...payload.messages]
         }
 
         return task.save()

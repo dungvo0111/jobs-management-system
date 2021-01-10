@@ -2,7 +2,7 @@ import { Types } from 'mongoose'
 import Customer, { CustomerDocument } from '../models/Customer'
 
 async function getAllCustomers(): Promise<CustomerDocument[]> {
-    const customers = await Customer.find({}, { 'jobIds': 0 })
+    const customers = await Customer.find({}, { firstName: 1, lastName: 1, email: 1, location: 1, _id: 0 })
         .sort({ firstName: 1 }).exec()
 
     return customers

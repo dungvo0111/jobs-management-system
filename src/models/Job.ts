@@ -10,7 +10,9 @@ export type JobDocument = Document & {
   status: Status;
   info: string;
   customerId: string;
+  customerName: string;
   userIds: string[];
+  userName: string;
   messageIds: string[];
   taskIds: string[];
 }
@@ -44,10 +46,17 @@ const jobSchema = new mongoose.Schema({
   },
   customerId: {
     type: String,
+  },
+  customerName: {
+    type: String,
     required: true,
   },
   userIds: {
     type: [String],
+  },
+  userName: {
+    type: String,
+    required: true,
   },
   messageIds: {
     type: [String],
