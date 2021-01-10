@@ -8,6 +8,9 @@
   },
   "author": "Bowden Kelly",
   "license": "MIT",
+  "engines": {
+    "node": "12.18.3"
+  },
   "scripts": {
     "start": "node dist/server.js",
     "serve": "node dist/server.js",
