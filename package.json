@@ -9,7 +9,11 @@
   "author": "Bowden Kelly",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/server.js",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build",
     "serve": "node dist/server.js",
     "watch-node": "nodemon dist/server.js",
     "watch": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
@@ -54,6 +58,7 @@
     "pug": "^2.0.4",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
+    "serve": "^11.3.2",
     "winston": "^3.2.1"
   },
   "devDependencies": {
